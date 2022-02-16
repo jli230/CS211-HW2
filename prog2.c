@@ -304,7 +304,7 @@ int str_search(char *s, char *pattern) {
         search++;
         index++;
     }
-    return -1;  // just a placeholder to make gcc happy for now
+    return -1;  // returns this value if searched through whole word for patter without match
 
 }
 
