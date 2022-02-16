@@ -37,6 +37,7 @@ void free_square_mtx(char **m, int n) {
     for (int i = 0; i<n; i++) {
         free(m[i]);
     }
+    free(m);
 }
 
 void pop_mtx_alpha(char **m, int n){
@@ -330,7 +331,8 @@ int main(){
     // char **a;
     // a = alloc_square_mtx(3);
     m = alloc_square_mtx(8);
-    mountains(m, 8);
+    //mountains(m, 8);
+    pop_mtx_alpha(m, 8);
     printf("\n");
     display_mtx(m, 8);
     // sink(m, 8);
@@ -360,7 +362,7 @@ int main(){
     // printf("\n");
     // gravity(m, 6);
     // display_mtx(m, 6);
-
+    free_square_mtx(m, 8);
     // char test[] = "abcd";
     // //str_trim(test);
     // printf("\n");
