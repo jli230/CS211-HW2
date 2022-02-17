@@ -91,7 +91,19 @@ void rotate_right(char **m, int n){
     int prev, curr;
     int endrow = n;
     int endcol = n;
+    int odd = 0;
+    int center = 0;
+    if (n % 2 == 1) {
+        odd = 1;
+    }
+    if (odd == 1) {
+        center = n / 2;
+        //printf("Center is on: %i, %i\n", center, center);
+    }
     while (x < endrow && y < endcol) {
+        if (odd == 1 && x == center && y == center) { //breaks out of loop if center is reached on an odd-numbered square
+            break;
+        }
         prev = m[x+1][y];
         for (int i = y; i<endcol; i++) {
             curr = m[x][i];
@@ -330,11 +342,14 @@ int main(){
     char **m;
     // char **a;
     // a = alloc_square_mtx(3);
-    m = alloc_square_mtx(8);
+    m = alloc_square_mtx(9);
     //mountains(m, 8);
-    pop_mtx_alpha(m, 8);
+    pop_mtx_alpha(m, 9);
     printf("\n");
-    display_mtx(m, 8);
+    display_mtx(m, 9);
+    printf("\n");
+    rotate_right(m, 9);
+    display_mtx(m, 9);
     // sink(m, 8);
     // printf("\n");
     // display_mtx(m, 8);
@@ -362,7 +377,7 @@ int main(){
     // printf("\n");
     // gravity(m, 6);
     // display_mtx(m, 6);
-    free_square_mtx(m, 8);
+    free_square_mtx(m, 9);
     // char test[] = "abcd";
     // //str_trim(test);
     // printf("\n");
